@@ -1,0 +1,11 @@
+[core]
+	user = Feng Liu
+	email = me.fengliu.23@gmail.com
+    editor = vim
+[alias]
+    graph = log --graph --oneline --decorate=full --color=auto
+    ci = commit
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false

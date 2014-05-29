@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/feng/workspace/tmp'
+let g:netrw_dirhist_2='/home/feng/svn/VTC_deploy/trunk/auto_deploy/tmp'
+let g:netrw_dirhist_3='/etc/lvm/backup'
+let g:netrw_dirhist_4='/etc/uwsgi'
