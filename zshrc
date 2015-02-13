@@ -79,6 +79,7 @@ alias -g ls='ls -X --color=auto'
 alias -g ll='ls -l'
 alias -g grep='grep --color=auto'
 alias -g vi='vi -p'
+alias xclip='xclip -selection clipboard'
 zstyle ':completion:*:ping:*' hosts 192.168.128.1{38,} www.g.cn \
       192.168.{1,0}.1{{7..9},}
 export PATH="${PATH}:/home/${USER}/bin:/sbin:/usr/sbin:/home/${USER}/opt/bin:"

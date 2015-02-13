@@ -35,8 +35,11 @@ set smarttab
 set laststatus=2
 
 
-let g:winManagerWindowLayout='FileExplorer|TagList'
+" let g:winManagerWindowLayout='FileExplorer|TagList'
+let g:winManagerWindowLayout='FileExplorer'
 nmap wm :WMToggle<cr>
+
+map <F4> :tabc<cr>
 
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
