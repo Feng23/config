@@ -20,3 +20,6 @@ ln -s $PWD/zshrc ~/.zshrc
 #git
 mv ~/.gitconfig ~/.gitconfig.old || true
 ln -s $PWD/gitconfig ~/.gitconfig
+
+#bin
+ln $PWD/bin ~/bin

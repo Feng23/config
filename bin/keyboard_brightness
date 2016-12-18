@@ -1,0 +1,89 @@
+#!/bin/zsh
+function get_brightness()
+{
+    cat /sys/devices/platform/applesmc.768/leds/smc::kbd_backlight/brightness
+}
+function set_brightness()
+{
+    dbus-send --system \
+              --type=method_call\
+              --dest=org.freedesktop.UPower\
+              /org/freedesktop/UPower/KbdBacklight \
+              org.freedesktop.UPower.KbdBacklight.SetBrightness \
+              int32:$1
+}
+function animate()
+{
+    current=$(get_brightness)
+    next=$1
+    step=5
+    if [ ${current} -gt ${next} ]; then
+        step="(-5)"
+    fi
+    while [ $(( (${current}-${next}) * (${current}-${next}-${step}) > 0)) = "1" ]
+    do
+        current=$((${current} + ${step}))
+        set_brightness ${current}
+        sleep .02
+    done
+}
+show_message(){
+}
+if [ $# = 0 ]
+then
+    get_brightness
+else
+    case $1 in
+        set)
+            set_brightness $2
+            ;;
+        increase)
+            new_brightness=$(($(get_brightness) + 5))
+            if [ ${new_brightness} -gt 255 ]; then
+                new_brightness=255
+            fi
+            set_brightness ${new_brightness}
+            show_message ${new_brightness}
+            ;;
+        decrease)
+            new_brightness=$(($(get_brightness) - 5))
+            if [ ${new_brightness} -lt 0 ]; then
+                new_birghtness=0
+            fi
+            set_brightness ${new_brightness}
+            show_message ${new_brightness}
+            ;;
+        animate)
+            animate $2
+            ;;
+        auto)
+            while true 
+            do
+                lumin=$(cat /sys/devices/platform/applesmc.768/light|awk -F"[\\(\\),]" '{print $2}')
+                if [ ${lumin} -lt 3 ]
+                then
+                    if [ $(get_brightness) -eq 0 ]
+                    then
+                        animate 255
+                    fi
+                else
+                    if [ $(get_brightness) -eq 255 ]
+                    then
+                        animate 0
+                    fi
+                fi
+                sleep 5
+            done
+            ;;
+        *)
+            echo "Set keyboard backlight"
+            echo "Usage: $0 <command> [parameters]"
+            echo "Available Commands:"
+            echo -e "set <value>:\t\tset an absolute value(0..255)"
+            echo -e "decrease:\t\tdecrease brightness"
+            echo -e "increase:\t\tincrease brightness"
+            echo -e "animate <value>:\tanimate"
+            echo -e "auto:\t\t\tauto mode"
+            ;;
+    esac
+fi
