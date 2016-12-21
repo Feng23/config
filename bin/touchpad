@@ -2,6 +2,4 @@
 
 # disable or enable touchpad
 
-flag=$(synclient -l|awk '/TouchpadOff/{print $3}')
-
-synclient TouchpadOff=$((${flag} == 0))
+synclient TouchpadOff=$(synclient -l|awk -F'=' '/TouchpadOff/{print !$2}')
