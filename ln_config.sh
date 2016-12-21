@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# used on my linux pc
+
 set -eu
 
 PWD=`pwd`
@@ -23,3 +25,7 @@ ln -s $PWD/gitconfig ~/.gitconfig
 
 #bin
 ln $PWD/bin ~/bin
+
+#dropbox
+wget "https://www.dropbox.com/download?dl=packages/dropbox.py" -O bin/dropbox
+chmod +x bin/dropbox

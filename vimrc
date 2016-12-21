@@ -2,6 +2,8 @@
 set history=800
 filetype plugin indent on
 
+set mouse=a
+
 " Turn on the wild menu
 set wildmenu
 " Ignore compiled files

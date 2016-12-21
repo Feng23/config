@@ -1,0 +1,4 @@
+#!/bin/sh
+# for pm bug
+killall -9 xfce4-power-manager
+xfce4-power-manager --debug

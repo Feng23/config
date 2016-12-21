@@ -1,0 +1,25 @@
+#!/usr/bin/zsh
+function random()
+{
+    echo $((0x$(head -c 1 /dev/urandom | xxd -p) % (${2} - ${1}) + ${1}))
+}
+printf '\033[0;0H' 
+
+<< COMMENT
+    for ((i=0;i<$((${LINES}*${COLUMNS}));i++)) 
+    do 
+        printf '\033[%om ' $(random 32 40) 
+    done
+COMMENT
+
+while true
+do
+    row=$(random 0 $((${LINES})))
+    col=$(random 0 $((${COLUMNS})))
+    color=$(random 32 40)
+    printf '\033[%d;%dH\033[%om          ' ${row} ${col} ${color}
+    printf '\033[%d;%dH\033[%om          ' $((${row} + 1)) ${col} ${color}
+    printf '\033[%d;%dH\033[%om          ' $((${row} + 2)) ${col} ${color}
+    printf '\033[%d;%dH\033[%om          ' $((${row} + 3)) ${col} ${color}
+    printf '\033[%d;%dH\033[%om          ' $((${row} + 4)) ${col} ${color}
+done
