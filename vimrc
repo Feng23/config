@@ -55,4 +55,5 @@ endif
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'vim-scripts/Conque-GDB'
 call vundle#end()            " required
