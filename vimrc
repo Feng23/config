@@ -2,7 +2,7 @@
 set history=800
 filetype plugin indent on
 
-set mouse=a
+set mouse=v
 
 " Turn on the wild menu
 set wildmenu

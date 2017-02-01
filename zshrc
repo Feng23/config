@@ -75,11 +75,12 @@ user-complete(){
 zle -N user-complete
 bindkey "\t" user-complete
 
-alias -g ls='ls -X --color=auto'
-alias -g ll='ls -l'
-alias -g grep='grep --color=auto'
-alias -g vi='vi -p'
+alias ls='ls -X --color=auto'
+alias ll='ls -l'
+alias grep='grep --color=auto'
+alias vi='vi -p'
 alias xclip='xclip -selection clipboard'
+alias O=gnome-open
 zstyle ':completion:*:ping:*' hosts 192.168.128.1{38,} www.g.cn \
       192.168.{1,0}.1{{7..9},}
 export PATH="${PATH}:/home/${USER}/bin:/sbin:/usr/sbin:/home/${USER}/opt/bin:"
