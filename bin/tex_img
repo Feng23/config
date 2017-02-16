@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -eu
+img=$1
+
+wh=$(mediainfo --Output='Image;%Width%,natheight=%Height%' $img)
+echo '\includegraphics[width=2.1in,natwidth='${wh}']{'$(basename $img)'}' | xclip -selection clipboard

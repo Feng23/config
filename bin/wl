@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# reload wl
+
+sudo rmmod wl
+sudo modprobe wl
+
+sudo service network-manager restart

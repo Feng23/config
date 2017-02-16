@@ -38,10 +38,11 @@ set laststatus=2
 
 
 " let g:winManagerWindowLayout='FileExplorer|TagList'
-let g:winManagerWindowLayout='FileExplorer'
-nmap wm :WMToggle<cr>
+" let g:winManagerWindowLayout='FileExplorer'
+" nmap wm :WMToggle<cr>
 
 map <F4> :tabc<cr>
+map <F8> :TagbarToggle<CR>
 
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
@@ -56,4 +57,5 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-scripts/Conque-GDB'
+Plugin 'majutsushi/tagbar'
 call vundle#end()            " required
