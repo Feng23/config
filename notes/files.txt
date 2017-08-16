@@ -1,0 +1,4 @@
+.ssh
+Downloads/books/
+Documents/work
+data/course.py

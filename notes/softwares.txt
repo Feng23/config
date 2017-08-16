@@ -1,0 +1,6 @@
+mendeleydesktop
+tmux
+xscreensaver
+ocular
+terminator
+ipython
